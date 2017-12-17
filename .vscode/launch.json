@@ -1,0 +1,38 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Electron Main",
+            "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
+            "program": "${workspaceFolder}/src/host/main.js",
+            "protocol": "inspector"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Extract",
+            "program": "${workspaceFolder}/src/lib/extract.js",
+            "args": [ "./screenshot.png" ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Compare",
+            "program": "${workspaceFolder}/src/lib/compare.js",
+            "args": [ "./debugimages/train/nepalShrineSnowDark.png", "./debugimages/train/nepalShrineSnowLight.png" ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "buildScreen",
+            "program": "${workspaceFolder}/src/lib/buildScreen.js",
+            "args": [ "./rawTrainDiff.png" ]
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "athena",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "desktop-screenshot": "^0.1.1",
+    "electron": "^1.7.9",
+    "jimp": "^0.2.28",
+    "pixelmatch": "^4.0.2",
+    "pngjs": "^3.3.1",
+    "stream-to-buffer": "^0.1.0"
+  },
+  "devDependencies": {
+    "prompt": "^1.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "extract": "node ./lib/extract.js",
+    "compare": "node ./lib/compare.js"
+  },
+  "author": "Zachary Marois <zachary.marois@gmail.com>",
+  "license": "ISC"
+}
