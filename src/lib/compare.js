@@ -14,13 +14,13 @@ if (require.main === module) {
     let image1 = await jimp.read(sourceFilename1);
     let image2 = await jimp.read(sourceFilename2);
     try {
-        let diff = new PNG({width: image1.bitmap.width, height: image1.bitmap.height});
+      let diff = new PNG({width: image1.bitmap.width, height: image1.bitmap.height});
 
-        pixelmatch(image1.bitmap.data, image2.bitmap.data, diff.data, image1.bitmap.width, image1.bitmap.height, {threshold: 0.05, includeAA: true});
+      pixelmatch(image1.bitmap.data, image2.bitmap.data, diff.data, image1.bitmap.width, image1.bitmap.height, {threshold: 0.05, includeAA: true});
 
-        await streamToBuffer(diff.pack()).then((buffer) => writeFile('out.png', buffer));
+      await streamToBuffer(diff.pack()).then((buffer) => writeFile('out.png', buffer));
     } catch (e) {
-        console.log(e);
+      console.log(e);
     }
-    }();
+  }();
 }
