@@ -1,1 +1,1 @@
-# athena
+# athena [![Build Status](https://travis-ci.org/ryus08/athena.svg?branch=master)](https://travis-ci.org/ryus08/athena)
