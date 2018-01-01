@@ -1,22 +1,23 @@
 const jimp = require('jimp');
 const Promise = require('bluebird');
+const prompt = require('prompt');
 
 // Takes an images that is greyscale and red and converts it to black and white.
-const decide = function(image) {
+function decide(image) {
   image.opaque();
-  image.scan(0, 0, image.bitmap.width, image.bitmap.height, function(x, y, idx) {
-    this.bitmap.data[idx] = this.bitmap.data[idx + 1] = this.bitmap.data[idx + 2] =
-            this.bitmap.data[idx] == 255 ? 255 : 0;
+  image.scan(0, 0, image.bitmap.width, image.bitmap.height, (x, y, idx) => {
+    this.bitmap.data[idx] = this.bitmap.data[idx] === 255 ? 255 : 0;
+    this.bitmap.data[idx + 1] = this.bitmap.data[idx];
+    this.bitmap.data[idx + 2] = this.bitmap.data[idx];
   });
-};
+}
 
 if (require.main === module) {
-  void async function run() {
-    let prompt = require('prompt');
+  (async function run() {
     prompt.start();
-    let sourceFilename = process.argv[2] || (await Promise.promisify(prompt.get)(['sourceFilename1'])).sourceFilename;
-    let image = await Promise.promisify(jimp.read)(sourceFilename);
+    const sourceFilename = process.argv[2] || (await Promise.promisify(prompt.get)(['sourceFilename1'])).sourceFilename;
+    const image = await Promise.promisify(jimp.read)(sourceFilename);
     decide(image);
     image.write('screen.png');
-  }();
+  }());
 }

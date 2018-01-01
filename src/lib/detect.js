@@ -1,3 +1,4 @@
+/*eslint-disable */
 // Detects triangles and quadrilaterals
 const cv = require('opencv');
 const Polygon = require('polygon');
@@ -13,14 +14,14 @@ const RED = [0, 0, 255, 100]; // B, G, R
 const GREEN = [0, 255, 0]; // B, G, R
 const WHITE = [255, 255, 255]; // B, G, R
 
-cv.readImage('C:\\Users\\Zach\\Desktop\\athena\\debugimages\\train\\test/test.jpg', function(err, im) {
+cv.readImage('C:\\Users\\Zach\\Desktop\\athena\\debugimages\\train\\test/test.jpg', (err, im) => {
   if (err) throw err;
 
   width = im.width();
   height = im.height();
   if (width < 1 || height < 1) throw new Error('Image has no size');
 
-  let out = new cv.Matrix(height, width);
+  const out = new cv.Matrix(height, width);
   im.convertGrayscale();
   imCanny = im.copy();
   imCanny.canny(lowThresh, highThresh);
@@ -31,7 +32,7 @@ cv.readImage('C:\\Users\\Zach\\Desktop\\athena\\debugimages\\train\\test/test.jp
   for (i = 0; i < contours.size(); i++) {
     if (contours.area(i) < minArea || contours.area(i) > maxArea) continue;
 
-    let arcLength = contours.arcLength(i, true);
+    const arcLength = contours.arcLength(i, true);
     contours.approxPolyDP(i, 0.01 * arcLength, true);
 
     if (!contours.isConvex(i)) continue;
@@ -51,14 +52,14 @@ cv.readImage('C:\\Users\\Zach\\Desktop\\athena\\debugimages\\train\\test/test.jp
       mostY = Math.max(mostY, contours.point(i, j).y);
     }
 
-    let points = [];
+    const points = [];
 
     for (j = 0; j < contours.cornerCount(i); j++) {
       points.push(contours.point(i, j));
     }
-    let p = new Polygon(points);
+    const p = new Polygon(points);
 
-    let corner = p.closestPointTo(p.center());
+    const corner = p.closestPointTo(p.center());
 
     out.line([points[0].x, points[0].y], [points[2].x, points[2].y], GREEN);
     out.line([points[1].x, points[1].y], [points[3].x, points[3].y], WHITE);
@@ -67,3 +68,4 @@ cv.readImage('C:\\Users\\Zach\\Desktop\\athena\\debugimages\\train\\test/test.jp
 
   out.save('C:\\Users\\Zach\\Desktop\\athena\\debugimages\\train\\test/detect-shapes.png');
 });
+/* eslint-enable */

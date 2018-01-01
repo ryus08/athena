@@ -14,12 +14,12 @@
     "pixelmatch": "^4.0.2",
     "pngjs": "^3.3.1",
     "polygon": "^1.0.2",
+    "prompt": "^1.0.0",
     "stream-to-buffer": "^0.1.0"
   },
   "devDependencies": {
     "eslint": "^4.14.0",
-    "eslint-config-google": "^0.9.1",
-    "prompt": "^1.0.0"
+    "eslint-config-google": "^0.9.1"
   },
   "scripts": {
     "test": "node node_modules/eslint/bin/eslint.js .",
