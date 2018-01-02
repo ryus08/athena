@@ -3,5 +3,5 @@ node_js:
   - "8"
 install: 
   - npm install -g eslint
-  - npm install -g eslint-config-google
+  - npm install -g eslint-config-airbnb
 script: eslint .

@@ -24,7 +24,7 @@ class Portraits {
     return this._height;
   }
 
-  get foundPolygons() {
+  get polygons() {
     return this._foundPolygons;
   }
 

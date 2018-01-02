@@ -5,10 +5,11 @@ const prompt = require('prompt');
 const _ = require('lodash');
 
 function decide(image, portraits) {
+  const portaitImage = image;
   image.scan(0, 0, image.bitmap.width, image.bitmap.height, (x, y, idx) => {
-    if (!_.some(portraits.foundPolygons, polygon => polygon.containsPoint({ x, y }))) {
-      image.bitmap.data[idx + 3] = 0;
-      image.bitmap.data[idx] = 0;
+    if (!_.some(portraits.polygons, polygon => polygon.containsPoint({ x, y }))) {
+      portaitImage.bitmap.data[idx + 3] = 0;
+      portaitImage.bitmap.data[idx] = 0;
     }
   });
 }
