@@ -32,7 +32,7 @@
             "request": "launch",
             "name": "buildScreen",
             "program": "${workspaceFolder}/src/lib/buildScreen.js",
-            "args": [ "./rawTrainDiff.png" ]
+            "args": [ "./debugimages/samples/screenshot8.png" ]
         }
     ]
 }
