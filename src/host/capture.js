@@ -1,11 +1,13 @@
 const { app, globalShortcut } = require('electron');
 const screenshot = require('desktop-screenshot');
+const moment = require('moment');
+const path = require('path');
 
-let count = 1;
+let dir = "screenshots";
+let fileprefix = "fortnite";
 app.on('ready', () => {
-  globalShortcut.register('V', () => {
-    screenshot(`screenshot${count}.png`, (error) => {
-      count += 1;
+  globalShortcut.register('G', () => {
+    screenshot(`${dir}/${fileprefix}-${moment().format("YYYY-MM-DD-hh-mm-ss-SSS")}.png`, (error) => {
       if (error) {
         console.log('Screenshot failed', error);
       } else {

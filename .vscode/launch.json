@@ -8,9 +8,9 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Electron Main",
+            "name": "Capture",
             "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
-            "program": "${workspaceFolder}/src/host/main.js",
+            "program": "${workspaceFolder}/src/host/capture.js",
             "protocol": "inspector"
         },
         {
